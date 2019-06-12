@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dane zmarłego nr {{ deadperson.pk }}</title> <!-- ten template obsługuje już zmienne przesłane przez DetailView, dlatego nazwą obiektu jest 'deadperson', bo to defaultowy sposób nazywania przez Django modeli (małe litery, łącznie pisane), a nie 'dead_person' jak w index.html-->
+</head>
+<body>
+{% block content %}
+		{% if deadperson %}
+		<li>
+			<h4>Nazwisko: {{ deadperson.surname }}</h4>
+			<h4>Imię: {{ deadperson.name }}</h4>
+			<h4>Drugie imię: {{ deadperson.second_name }}</h4>
+			<h4>Data urodzenia: {{ deadperson.birth_date }}</h4>
+			<h4>Data śmierci: {{ deadperson.death_date }}</h4>
+			<h4>Numer kwatery na cmentarzu: {{ deadperson.pk }}</h4>
+			<h4>Miejsce na cmentarzu: {{ deadperson.place }}</h4>
+		</li>
+		{% endif %}
+		<a class="btn btn-default" href="{% url 'edit' pk=deadperson.pk %}"><span>Edytuj</span></a>
+{% endblock %}
+
+</body>
+</html>
+
+
+

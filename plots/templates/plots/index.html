@@ -4,13 +4,17 @@
 	<title>Baza Cmentarza w Żurowie</title>
 </head>
 <body>
-	<h1>Lista zmarłych na naszym cmentarzu: </h1>
+	<h2>Lista zmarłych na naszym cmentarzu:</h2>
 {% if dead_person_list %}
 	{% for dead_person in dead_person_list %}
 	<li>
 		<h3><a href="{% url 'detail' dead_person.pk %}">{{ dead_person.surname }} {{ dead_person.second_name }} {{ person.name }}</a></h3> <!-- KURWA NIGDY SPACJI NIE DAWAJ PO % W JINJA!!!!!-->
 	</li>
 	{% endfor %}
+{% endif %}
+<a class="btn btn-default" href="{% url 'add' %}"><span>Dodaj nową osobę</span></a>
+{% if context %}
+	<p>{{ context }}</p>
 {% endif %}
 </body>
 </html>

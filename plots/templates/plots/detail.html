@@ -17,8 +17,8 @@
 		</li>
 		{% endif %}
 		<a class="btn btn-default" href="{% url 'edit' pk=deadperson.pk %}"><span>Edytuj</span></a>
+		<a class="btn btn-default" href="{% url 'delete' pk=deadperson.pk %}"><span>Usuń</span></a>
 {% endblock %}
-
 </body>
 </html>
 

@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator
 from django.urls import reverse
 
+
 class PlaceOnCemetary(models.Model):
 	horizontal = models.IntegerField(
 		validators=[MaxValueValidator(4, 'Miejsce wykracza poza mapę cmentarza'),]
@@ -12,7 +13,6 @@ class PlaceOnCemetary(models.Model):
 
 	def __str__(self):
 		return f"H{self.horizontal} x V{self.vertical}"
-
 
 class DeadPerson(models.Model):
 	name = models.CharField(max_length=30)
@@ -32,3 +32,19 @@ class DeadPerson(models.Model):
 
 	def __str__(self): #dzięki temu w QuerySet instancje będą identyfikowane po jednym z pól danych
 		return f"{self.surname} {self.name}" #f-string!!!
+
+class Cemetary(models.Model):
+	cemetary_name = models.CharField(max_length=30, default='cmentarz')
+	cemetary_horizontical = models.IntegerField(default=25,
+		validators=[MaxValueValidator(100, 'Cmentarz jest za duży'), MinValueValidator(25, 'Cmentarz jest za mały')])
+
+	cemetary_vertical = models.IntegerField(default=25,
+		validators=[MaxValueValidator(100, 'Cmentarz jest za duży'), MinValueValidator(25, 'Cmentarz jest za mały')])
+
+	cemetary = models.ForeignKey(
+		PlaceOnCemetary,
+		on_delete = models.CASCADE
+	)
+
+	def __str__(self):
+		return f"{self.cemetary_name}"

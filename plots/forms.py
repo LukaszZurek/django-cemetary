@@ -15,8 +15,10 @@ class DeadPersonForm(ModelForm): #przerabiam mój model na reprezentację formul
 		death_date = self.cleaned_data['death_date']
 		if death_date > datetime.date.today(): #spr. czy nieboszczyk nie umarł w... przyszłości
 			raise ValidationError(_('Osoba pochowana w naszym cmentarzu nie może umrzeć w przyszłości'))
+		return death_date #walidacja zakończona - konieczny jest return
 		
 	def clean_birth_date(self):
 		birth_date = self.cleaned_data['birth_date']
 		if birth_date > datetime.date.today(): #spr. czy nieboszczyk nie urodził się w... przyszłości
 			raise ValidationError(_('Osoba pochowana w naszym cmentarzy jeszcze się nie urodziła'))
+		return birth_date

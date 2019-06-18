@@ -1,0 +1,6 @@
+<h1>Usunąć osobę?</h1>
+<form method="post">
+{% csrf_token %}
+Czy na pewno chcesz usunąć osobę {{ deadperson.name }} {{ deadperson.surname }} ?
+<input type="submit" value="Submit"/>
+</form>

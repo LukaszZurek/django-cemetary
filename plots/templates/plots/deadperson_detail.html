@@ -16,8 +16,8 @@
 			<h4>Miejsce na cmentarzu: {{ deadperson.place }}</h4>
 		</li>
 		{% endif %}
-		<a class="btn btn-default" href="{% url 'edit' pk=deadperson.pk %}"><span>Edytuj</span></a>
-		<a class="btn btn-default" href="{% url 'delete' pk=deadperson.pk %}"><span>Usuń</span></a>
+		<a class="btn btn-default" href="{% url 'deadperson_edit' pk=deadperson.pk %}"><span>Edytuj</span></a>
+		<a class="btn btn-default" href="{% url 'deadperson_delete' pk=deadperson.pk %}"><span>Usuń</span></a>
 {% endblock %}
 </body>
 </html>

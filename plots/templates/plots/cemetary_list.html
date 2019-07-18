@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cmentarzysko</title>
+</head>
+<body>
+	<div class='navbar'>
+		<div class='add_button'><a class="btn btn-default" href="{% url 'cemetary_add' %}"><span>*Dodaj nowy cmentarz</span></a></div> 
+	</div>
+
+	<h2>Lista cmentarzy w bazie:</h2>
+{% if cemetary_list %}
+	{% for cemetary in cemetary_list %}
+	<li>
+		<h3><a href="{% url 'cemetary_detail' cemetary.pk %}">{{ cemetary.cemetary_name }}</a></h3>
+	</li>
+	{% endfor %}
+{% endif %}
+</body>
+</html>

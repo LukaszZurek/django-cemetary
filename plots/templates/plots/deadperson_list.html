@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista zmarłych</title>
+</head>
+<body>
+
+<div>
+<div class='return_button'><a class="btn btn-default" href="{% url 'cemetary_list' %}"><span>Powrót do listy cmentarzy</span></a></div>
+<div class='add_button'><a class="btn btn-default" href="{% url 'deadperson_add' %}"><span>Dodaj nową osobę</span></a></div>
+{% if dead_person_list %}
+	{% for dead_person in dead_person_list %}
+	<li>
+		<h3><a href="{% url 'deadperson_detail' dead_person.pk %}">{{ dead_person.surname }} {{ dead_person.second_name }} {{ dead_person.name }}</a></h3> <!-- KURWA NIGDY SPACJI NIE DAWAJ PO % W JINJA!!!!!-->
+	</li>
+	{% endfor %}
+	{% else %}
+	<h3>brak osób na cmentarzu</h3>
+{% endif %}
+</div>
+
+</body>
+</html>
+
+<!---->
+
+
+

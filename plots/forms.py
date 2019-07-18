@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _ #co to kurwa jest
 
-from plots.models import DeadPerson
+from plots.models import DeadPerson, Cemetary
 
 class DeadPersonForm(ModelForm): #przerabiam mój model na reprezentację formularzową, to jest ZAJEBIŚCIE przydatne przy walidacji inputu użytkownika (bo zamiast wpierdalać logikę w templatkę, załątwiam to tutaj) 
 	class Meta:
@@ -22,3 +22,8 @@ class DeadPersonForm(ModelForm): #przerabiam mój model na reprezentację formul
 		if birth_date > datetime.date.today(): #spr. czy nieboszczyk nie urodził się w... przyszłości
 			raise ValidationError(_('Osoba pochowana w naszym cmentarzy jeszcze się nie urodziła'))
 		return birth_date
+
+class CemetaryForm(ModelForm):
+	class Meta:
+		model = Cemetary
+		fields = '__all__'

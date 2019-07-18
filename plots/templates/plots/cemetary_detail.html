@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+	border: 1px solid black;
+}
+</style>
+	<title>Szczegóły {{ cemetary.cemetary_name }}</title>
+</head>
+<body>
+{% block content %}
+		{% if cemetary %}
+		<li>
+			<h4>Nazwa: {{ cemetary.cemetary_name }}</h4>
+			<h4>Liczba miejsc na cmentarzu: {{ cemetary.allplaces }} </h4>
+			<h4>Liczba miejsc zajętych: <!-- miejsca zajęte == liczba umarlaków na cmentarzu--></h4>
+			<h4><a href="{% url 'deadperson_list' cemetary.pk %}">Lista osób znajdujących się na {{ cemetary.cemetary_name }}</a></h4>
+		</li>
+		<table class='cemetary' style="width: 30%">
+	  		<tr>
+	  			<th>{{ cemetary.cemetary_horizontical }}</th>	
+	  		</tr>
+	  		<tr>
+	  			<td>fggg</td>
+	  			<td>fggg</td>
+	  			<td>fggg</td>
+	  		</tr>
+		</table>
+		{% endif %}
+{% endblock %}
+</body>
+</html>
